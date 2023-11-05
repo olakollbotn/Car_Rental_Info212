@@ -14,8 +14,8 @@ class Employee:
     @staticmethod
     def get_all():
         with db_session() as session:
-            result = session.run("MATCH (employee:Employee) RETURN employee")
-            return [node_to_dict(record['employee']) for record in result]
+            result = session.run("MATCH (employee:Employee) RETURN employee, ID(employee) as id")
+            return [dict(node_to_dict(record['employee']), id=record['id']) for record in result]
 
     @staticmethod
     def update(employee_id, json_data):

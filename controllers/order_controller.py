@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, render_template
 from models.order import Order
 
 order_blueprint = Blueprint('order_blueprint', __name__)
@@ -10,6 +10,11 @@ def order_car():
         Order.order_car(data['customer_id'], data['car_id'])
         return jsonify({"success": "Car ordered successfully"}), 200
     return jsonify({"error": "Request must be JSON"}), 415
+
+@order_blueprint.route('/', methods=['GET'])
+def get_orders():
+    orders = Order.get_all()
+    return render_template('orders.html', orders=orders)
 
 @order_blueprint.route('/cancel-order-car', methods=['POST'])
 def cancel_order_car():

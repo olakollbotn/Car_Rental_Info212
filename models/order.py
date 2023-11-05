@@ -1,4 +1,6 @@
 from database import db_session
+from models.utils import node_to_dict
+
 
 class Order:
     @staticmethod
@@ -11,6 +13,21 @@ class Order:
                 "SET car.status = 'booked'",
                 customer_id=customer_id, car_id=car_id
             )
+
+    @staticmethod
+    def get_all():
+        with db_session() as session:
+            result = session.run("""
+                MATCH (order:Order)-[:FOR_CUSTOMER]->(customer:Customer)
+                      -[:WITH_CAR]->(car:Car)
+                RETURN ID(order) as order_id, ID(customer) as customer_id, ID(car) as car_id, order.status as status
+                """)
+            return [{
+                'id': record['order_id'],
+                'customer_id': record['customer_id'],
+                'car_id': record['car_id'],
+                'status': record['status']
+            } for record in result]
 
     @staticmethod
     def cancel_order_car(customer_id, car_id):
