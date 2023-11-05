@@ -3,7 +3,7 @@ from models.employee import Employee
 
 employee_blueprint = Blueprint('employee_blueprint', __name__)
 
-@employee_blueprint.route('/', methods=['POST'])
+@employee_blueprint.route('/create', methods=['POST'])
 def create_employee():
     if request.is_json:
         employee = Employee.create_from_json(request.get_json())

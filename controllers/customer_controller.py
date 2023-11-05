@@ -3,7 +3,7 @@ from models.customer import Customer
 
 customer_blueprint = Blueprint('customer_blueprint', __name__)
 
-@customer_blueprint.route('/', methods=['POST'])
+@customer_blueprint.route('/create', methods=['POST'])
 def create_customer():
     if request.is_json:
         customer = Customer.create_from_json(request.get_json())

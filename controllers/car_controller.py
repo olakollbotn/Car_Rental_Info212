@@ -3,7 +3,7 @@ from models.car import Car
 
 car_blueprint = Blueprint('car_blueprint', __name__)
 
-@car_blueprint.route('/', methods=['POST'])
+@car_blueprint.route('/create', methods=['POST'])
 def create_car():
     if request.is_json:
         car = Car.create_from_json(request.get_json())

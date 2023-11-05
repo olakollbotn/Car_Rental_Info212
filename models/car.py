@@ -6,7 +6,7 @@ class Car:
     def create_from_json(json_data):
         with db_session() as session:
             result = session.run(
-                "CREATE (car:Car {make: $make, model: $model, year: $year, location: $location, status: 'available'}) RETURN car",
+                "CREATE (car:Car {id: $id, make: $make, model: $model, year: $year, location: $location, status: 'available'}) RETURN car",
                 **json_data
             )
             return result.single()[0]
