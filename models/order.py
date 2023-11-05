@@ -51,9 +51,25 @@ class Order:
     @staticmethod
     def return_car(customer_id, car_id, status):
         with db_session() as session:
-            session.run(
-                "MATCH (customer:Customer)-[:BOOKED]->(car:Car) WHERE id(customer) = $customer_id AND id(car) = $car_id "
-                "SET car.status = $status "
-                "REMOVE customer-[:BOOKED]->car",
-                customer_id=customer_id, car_id=car_id, status=status
-            )
+            # Begin transaction
+            tx = session.begin_transaction()
+            try:
+                # Match the booking relationship
+                result = tx.run(
+                    """
+                    MATCH (customer:Customer)-[booking:BOOKED]->(car:Car)
+                    WHERE id(customer) = $customer_id AND id(car) = $car_id
+                    SET car.status = $status
+                    DELETE booking  // Correct keyword to delete the relationship
+                    RETURN car
+                    """,
+                    customer_id=customer_id, car_id=car_id, status=status
+                )
+                car = result.single()[0]
+                # Commit transaction
+                tx.commit()
+                return car
+            except Exception as e:
+                # Rollback transaction on error
+                tx.rollback()
+                raise e
