@@ -1,14 +1,23 @@
-from flask import Blueprint, request, jsonify, render_template
+from flask import Blueprint, request, jsonify, render_template, url_for
+from werkzeug.utils import redirect
+
 from models.customer import Customer
 
 customer_blueprint = Blueprint('customer_blueprint', __name__)
 
-@customer_blueprint.route('/create', methods=['POST'])
+@customer_blueprint.route('/', methods=['POST'])
 def create_customer():
     if request.is_json:
-        customer = Customer.create_from_json(request.get_json())
-        return jsonify(customer.to_dict()), 201
-    return jsonify({"error": "Request must be JSON"}), 415
+        customer_data = request.get_json()
+        customer = Customer.create_from_json(customer_data)
+        # Check if the client accepts HTML responses
+        if 'text/html' in request.accept_mimetypes:
+            return redirect(url_for('customer_blueprint.get_customers'))
+        else:
+            # Return JSON response for API clients
+            return jsonify(customer), 201
+    else:
+        return jsonify({"error": "Request must be JSON"}), 415
 
 
 @customer_blueprint.route('/', methods=['GET'])

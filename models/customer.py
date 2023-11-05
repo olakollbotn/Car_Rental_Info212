@@ -14,8 +14,9 @@ class Customer:
     @staticmethod
     def get_all():
         with db_session() as session:
-            result = session.run("MATCH (customer:Customer) RETURN customer")
-            return [node_to_dict(record['customer']) for record in result]
+            result = session.run("MATCH (customer:Customer) RETURN customer, ID(customer) as id")
+            # Convert the results to a list of dictionaries, including the internal ID
+            return [dict(node_to_dict(record['customer']), id=record['id']) for record in result]
 
     @staticmethod
     def update(customer_id, json_data):

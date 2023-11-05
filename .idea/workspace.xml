@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4d57de12-0106-4e61-a847-8895effa18f3" name="Changes" comment="" />
+    <list default="true" id="4d57de12-0106-4e61-a847-8895effa18f3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/customer_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/customer_controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/customer.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/customer.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -63,5 +67,17 @@
       <updated>1699186195643</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
