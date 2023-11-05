@@ -6,8 +6,16 @@ employee_blueprint = Blueprint('employee_blueprint', __name__)
 @employee_blueprint.route('/create', methods=['POST'])
 def create_employee():
     if request.is_json:
-        employee = Employee.create_from_json(request.get_json())
-        return jsonify(employee.to_dict()), 201
+        employee_data = request.get_json()
+        employee = Employee.create_from_json(employee_data)
+        return jsonify(employee), 201
+    else:
+        # Handle form data for form submissions
+        employee_data = request.form.to_dict()
+        employee = Employee.create_from_json(employee_data)
+        # After creation, redirect to the list of employees or to a confirmation page
+        # return redirect(url_for('employee_blueprint.get_employees'))
+    # If not JSON, return an error or redirect as needed
     return jsonify({"error": "Request must be JSON"}), 415
 
 @employee_blueprint.route('/', methods=['GET'])

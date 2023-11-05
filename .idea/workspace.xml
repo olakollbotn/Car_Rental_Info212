@@ -2,18 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4d57de12-0106-4e61-a847-8895effa18f3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/orders.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/car_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/car_controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/order_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/order_controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/car.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/car.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/employee_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/employee_controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/customer.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/customer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/employee.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/employee.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/order.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/order.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/cars.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/cars.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/customers.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/customers.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/employees.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/employees.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

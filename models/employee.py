@@ -6,10 +6,14 @@ class Employee:
     def create_from_json(json_data):
         with db_session() as session:
             result = session.run(
-                "CREATE (employee:Employee {id: $id, name: $name, address: $address, branch: $branch}) RETURN employee",
+                """
+                CREATE (employee:Employee {name: $name, address: $address, branch: $branch})
+                RETURN employee
+                """,
                 **json_data
             )
-            return result.single()[0]
+            node = result.single()[0]
+            return node_to_dict(node)
 
     @staticmethod
     def get_all():
